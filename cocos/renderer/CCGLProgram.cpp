@@ -95,6 +95,8 @@ const char* GLProgram::SHADER_NAME_LABEL_NORMAL = "ShaderLabelNormal";
 const char* GLProgram::SHADER_NAME_LABEL_OUTLINE = "ShaderLabelOutline";
 
 const char* GLProgram::SHADER_CAMERA_CLEAR = "ShaderCameraClear";
+// from word proj
+const char* GLProgram::SHADER_NAME_POSITION_TEXTURE_SP = "ShaderPositionTexture_sp";
 
 
 // uniform names

@@ -62,6 +62,9 @@ enum {
     kShaderType_LabelNormal,
     kShaderType_LabelOutline,
     kShaderType_CameraClear,
+    
+    kShaderType_PositionTexture_sp,
+    
     kShaderType_MAX,
 };
 
@@ -130,11 +133,15 @@ void GLProgramCache::loadDefaultGLPrograms()
     loadDefaultGLProgram(p, kShaderType_PositionTextureColor);
     _programs.insert( std::make_pair( GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR, p ) );
 
+    p = new (std::nothrow) GLProgram();
+    loadDefaultGLProgram(p,kShaderType_PositionTexture_sp);
+    _programs.insert( std::make_pair(GLProgram::SHADER_NAME_POSITION_TEXTURE_SP,p) );
+
     // Position Texture Color without MVP shader
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_PositionTextureColor_noMVP);
     _programs.insert( std::make_pair( GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP, p ) );
-
+    
     // Position Texture Color alpha test
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_PositionTextureColorAlphaTest);
@@ -261,7 +268,11 @@ void GLProgramCache::reloadDefaultGLPrograms()
     p = getGLProgram(GLProgram::SHADER_NAME_POSITION_COLOR_TEXASPOINTSIZE);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_PositionColorTextureAsPointsize);
-
+    
+    p = getGLProgram(GLProgram::SHADER_NAME_POSITION_TEXTURE_SP);
+    p->reset();
+    loadDefaultGLProgram(p, kShaderType_PositionTexture_sp);
+    
     //
     // Position, Color shader no MVP
     //
@@ -398,6 +409,10 @@ void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
         case kShaderType_CameraClear:
             p->initWithByteArrays(ccCameraClearVert, ccCameraClearFrag);
             break;
+        case kShaderType_PositionTexture_sp:
+            p->initWithByteArrays(ccPositionTexture_vert,ccPositionColor_frag);
+        break;
+
         default:
             CCLOG("cocos2d: %s:%d, error shader type", __FUNCTION__, __LINE__);
             return;

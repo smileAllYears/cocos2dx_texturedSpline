@@ -189,6 +189,9 @@ public:
     /**Built in shader for draw a sector with 90 degrees with center at bottom left point.*/
     static const char* SHADER_NAME_POSITION_LENGTH_TEXTURE_COLOR;
 
+    /** from card project */
+    static const char* SHADER_NAME_POSITION_TEXTURE_SP;
+
     /**Built in shader for ui effects */
     static const char* SHADER_NAME_POSITION_GRAYSCALE;
     static const char* SHADER_NAME_SPRITE_DISTORTION;

@@ -94,6 +94,8 @@ extern CC_DLL const GLchar * cc3D_Terrain_vert;
 extern CC_DLL const GLchar * cc3D_Terrain_frag;
 extern CC_DLL const GLchar * ccCameraClearVert;
 extern CC_DLL const GLchar * ccCameraClearFrag;
+
+extern CC_DLL const GLchar * ccPositionTexture_sp_frag;
 NS_CC_END
 /**
  end of support group
